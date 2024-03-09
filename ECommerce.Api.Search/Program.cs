@@ -1,4 +1,5 @@
 using ECommerce.Api.Search.Interfaces;
+using ECommerce.Api.Search.Middleware;
 using ECommerce.Api.Search.Services;
 using Polly;
 
@@ -24,6 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseLogUrl();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
