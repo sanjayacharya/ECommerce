@@ -1,4 +1,5 @@
 using ECommerce.Api.Search.Interfaces;
+using ECommerce.Api.Search.Middleware;
 using ECommerce.Api.Search.Services;
 using Polly;
 
@@ -9,24 +10,22 @@ builder.Services.AddScoped<ISearchService,SearchService>();
 builder.Services.AddScoped<IOrderService,OrderService>();
 builder.Services.AddScoped<IProductService,ProductService>();
 builder.Services.AddScoped<ICustomerService,CustomerService>();
-builder.Services.AddHttpClient("OrdersService", config =>
+var dependantServices = builder.Configuration.GetSection("Services");
+var serviceCollection = dependantServices.Get<Dictionary<string,string>>();
+foreach (var service in serviceCollection)
 {
-    config.BaseAddress = new Uri(builder.Configuration["Services:Orders"]);
-});
-builder.Services.AddHttpClient("ProductService", config =>
-{
-    config.BaseAddress = new Uri(builder.Configuration["Services:Products"]);
-}).AddTransientHttpErrorPolicy(p=>p.WaitAndRetryAsync(5,_=>TimeSpan.FromMilliseconds(500)));
-builder.Services.AddHttpClient("CustomerService", config =>
-{
-    config.BaseAddress = new Uri(builder.Configuration["Services:Customers"]);
-});
+    builder.Services.AddHttpClient(service.Key, config =>
+    {
+        config.BaseAddress = new Uri(service.Value);
+    }).AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)));
+}
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseLogUrl();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
