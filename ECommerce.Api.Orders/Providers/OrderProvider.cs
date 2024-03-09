@@ -3,6 +3,7 @@ using ECommerce.Api.Orders.Db;
 using ECommerce.Api.Orders.Interfaces;
 using ECommerce.Api.Orders.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ECommerce.Api.Orders.Providers
 {
@@ -26,6 +27,7 @@ namespace ECommerce.Api.Orders.Providers
                 var orderId = Guid.NewGuid().ToString();
                 editModel.Id = orderId;
                 editModel.Items.ForEach(item => item.OrderId = orderId);
+                editModel.Total = editModel.Items.Select(s => s.UnitPrice).Sum();
                 await _dbContext.Orders.AddAsync(editModel);
                 await _dbContext.SaveChangesAsync();
                 return (true, null);
@@ -111,6 +113,7 @@ namespace ECommerce.Api.Orders.Providers
                 var editModel = _mapper.Map<Db.Order>(order);
                 editModel.Id = id;
                 editModel.Items.ForEach(item => item.OrderId = id);
+                editModel.Total = editModel.Items.Select(s => s.UnitPrice).Sum();
                 _dbContext.Orders.Update(editModel);
                 await _dbContext.SaveChangesAsync();
                 existingOrder = await _dbContext.Orders.FirstOrDefaultAsync(s => s.Id == id);
