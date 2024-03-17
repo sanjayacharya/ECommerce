@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Products", "ECommerce.Api.Product\ECommerce.Api.Products.csproj", "{F7E99EF9-DB99-4014-BB65-F507AB50F9D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Api.Products", "ECommerce.Api.Product\ECommerce.Api.Products.csproj", "{F7E99EF9-DB99-4014-BB65-F507AB50F9D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Customers", "ECommerce.Api.Customer\ECommerce.Api.Customers.csproj", "{6B4D1AC9-B501-4498-8B99-1AAEF65528CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Api.Customers", "ECommerce.Api.Customer\ECommerce.Api.Customers.csproj", "{6B4D1AC9-B501-4498-8B99-1AAEF65528CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Orders", "ECommerce.Api.Orders\ECommerce.Api.Orders.csproj", "{271DBB90-9EE5-437A-9AC2-9C71FA28AB8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Api.Orders", "ECommerce.Api.Orders\ECommerce.Api.Orders.csproj", "{271DBB90-9EE5-437A-9AC2-9C71FA28AB8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Search", "ECommerce.Api.Search\ECommerce.Api.Search.csproj", "{34126C20-75F3-4908-BFD8-0008C2B33ECB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Api.Search", "ECommerce.Api.Search\ECommerce.Api.Search.csproj", "{34126C20-75F3-4908-BFD8-0008C2B33ECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Products.Test", "ECommerce.Api.Products.Test\ECommerce.Api.Products.Test.csproj", "{C5B96567-0056-40DA-975E-898626D498E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Api.Products.Test", "ECommerce.Api.Products.Test\ECommerce.Api.Products.Test.csproj", "{C5B96567-0056-40DA-975E-898626D498E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Users", "ECommerce.Api.Users\ECommerce.Api.Users.csproj", "{58FC5389-CD85-4CF4-B765-F8D2106BDAE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C5B96567-0056-40DA-975E-898626D498E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5B96567-0056-40DA-975E-898626D498E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5B96567-0056-40DA-975E-898626D498E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58FC5389-CD85-4CF4-B765-F8D2106BDAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FC5389-CD85-4CF4-B765-F8D2106BDAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58FC5389-CD85-4CF4-B765-F8D2106BDAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58FC5389-CD85-4CF4-B765-F8D2106BDAE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

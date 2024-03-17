@@ -1,11 +1,13 @@
 using ECommerce.Api.Search.Interfaces;
 using ECommerce.Api.Search.Middleware;
+using ECommerce.Api.Search.Models;
 using ECommerce.Api.Search.Services;
 using Polly;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<SecurityDetailsOptions>(builder.Configuration.GetSection(SecurityDetailsOptions.SecurityDetails));
 builder.Services.AddScoped<ISearchService,SearchService>();
 builder.Services.AddScoped<IOrderService,OrderService>();
 builder.Services.AddScoped<IProductService,ProductService>();
