@@ -1,4 +1,6 @@
 ﻿using ECommerce.Api.Search.Interfaces;
+using ECommerce.Api.Search.Models;
+using Microsoft.Extensions.Options;
 
 namespace ECommerce.Api.Search.Services
 {
@@ -7,17 +9,21 @@ namespace ECommerce.Api.Search.Services
         private readonly IOrderService _orderService;
         private readonly IProductService _productService;
         private readonly ICustomerService _customerService;
-        public SearchService(IOrderService orderService,IProductService productService,ICustomerService customerService)
+        private readonly SecurityDetailsOptions _securityDetailsOptions;
+        public SearchService(IOrderService orderService,IProductService productService,ICustomerService customerService,
+            IOptions<SecurityDetailsOptions> options)
         {
             _orderService = orderService;
             _productService = productService;
             _customerService = customerService;
+            _securityDetailsOptions = options.Value;
         }
         public async Task<(bool IsSuccess, dynamic SearchResult)> SearchAsync(string customerId)
         {
             var orderResult= await _orderService.GetOrdersAsync(customerId);
             var productResult = await _productService.GetProductsAsync();
             var customerResult=await _customerService.GetCustomerAsync(customerId);
+            //var res = _securityDetailsOptions;
             if(orderResult.IsSuccess)
             {
                 orderResult.Orders.ForEach(order =>
